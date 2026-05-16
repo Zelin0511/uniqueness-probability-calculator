@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>心理不可替代性概率评估器</title>
+    <meta
+      name="description"
+      content="一个基于情感强度、互动持续性、共同记忆、角色稀缺性和自我叙事参与度的关系独特性概率评估工具。"
+    >
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">关系独特性模型 · 阶段性演示</p>
+          <h1 id="page-title">心理不可替代性概率评估器</h1>
+          <p class="intro-copy">
+            根据五个关系变量，估算一个人在某一观察者心理表征中的不可替代性倾向。
+          </p>
+        </div>
+        <div class="model-chip" aria-label="当前模型">
+          <span>Logistic</span>
+          <strong>P(U<sub>BA</sub>)</strong>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="评估工具">
+        <form class="input-panel" id="calculator-form">
+          <div class="section-title">
+            <h2>变量输入</h2>
+            <button class="icon-button" type="button" id="reset-button" aria-label="重置为默认值" title="重置">
+              ↺
+            </button>
+          </div>
+
+          <div class="relation-type">
+            <label for="relation-type">关系类型</label>
+            <select id="relation-type" name="relationType">
+              <option value="general">一般关系</option>
+              <option value="friendship">长期友谊</option>
+              <option value="romantic">亲密关系</option>
+              <option value="mentor">引导关系</option>
+            </select>
+            <p class="relation-description" id="relation-description"></p>
+          </div>
+
+          <div class="sliders" id="sliders"></div>
+
+          <label class="toggle-row">
+            <input type="checkbox" id="advanced-toggle">
+            <span>显示模型细节</span>
+          </label>
+        </form>
+
+        <section class="result-panel" aria-live="polite">
+          <div class="meter-block">
+            <div class="meter-copy">
+              <span class="result-label">不可替代性倾向</span>
+              <strong id="probability">--%</strong>
+            </div>
+            <div class="meter" aria-hidden="true">
+              <span id="meter-fill"></span>
+            </div>
+            <div class="level-row">
+              <span id="level-label">等待输入</span>
+              <span id="confidence-label">理论模型估计</span>
+            </div>
+          </div>
+
+          <div class="result-summary" id="result-summary"></div>
+
+          <div class="contribution-block">
+            <h2>变量贡献</h2>
+            <div id="contributions" class="contributions"></div>
+          </div>
+
+          <blockquote class="care-note">
+            你本身是独一无二的，但这并不意味着你在每一个人心中都无可替代。也许你来到这里，是因为失望、不确定，或只是想确认自己是否重要。无论原因是什么，我都想告诉你：大多数关系都有阶段性，一个人在别人心中的位置会变化，但这并不削弱你的价值。请把一点注意力还给自己，让自己过得轻一点、快乐一点。
+          </blockquote>
+        </section>
+      </section>
+
+      <section class="details" id="model-details" hidden>
+        <div>
+          <h2>模型公式</h2>
+          <p>
+            本工具使用理论型权重，不代表真实关系的确定结论。每个变量先从 0-10 标准化到 0-1，再进入逻辑函数。
+          </p>
+        </div>
+        <pre><code>z = w1E + w2I + w3M + w4R + w5S + w6EM + w7RS + w8MS - b
+P = 1 / (1 + e^(-z))</code></pre>
+      </section>
+
+      <section class="disclaimer">
+        <h2>使用说明</h2>
+        <p>
+          本工具只用于理论模型演示和自我反思，不用于判断真实关系价值、诊断心理状态或替代专业咨询。结果越高，只表示模型认为这组关系变量更接近“心理不可替代性”的条件；结果越低，也不表示你这个人不重要。
+        </p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
