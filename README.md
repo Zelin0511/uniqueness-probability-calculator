@@ -4,7 +4,11 @@
 
 ## 在线使用
 
-发布到 GitHub Pages 后，可以直接通过浏览器访问本工具。当前项目是纯静态页面，不需要后端服务。
+可以直接通过浏览器访问本工具：
+
+- https://zelin0511.github.io/uniqueness-probability-calculator/
+
+当前项目是纯静态页面，不需要后端服务。
 
 ## 配套文章
 
